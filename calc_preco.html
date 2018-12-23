@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<style type="text/css">
+		h1, h2, h3, h4 { font-family: "Arial", serif, "Time New Roma";
+			 font-weight: bold;
+			 color: #e07620;
+		 }
+	    .logo {
+	    	width: 150px;
+	    	height: 50px;
+	    }
+	    .cab {
+	    	font-family: "Arial", serif, "Time New Roma";
+	    	font-weight: bold;
+	    }
+	    .text {
+	    	font-family: "Arial", serif, "Time New Roma";
+	    }
+	</style>
+	<script type="text/javascript">
+		"use strict";
+
+		function calculaCompra(){
+			var pcneg = document.getElementById("pcneg");
+			var vlipi = document.getElementById("vlipi");
+			var pcipi = document.getElementById("pcipi");
+			var dscomer = document.getElementById("dscomer");
+			var vldesc = document.getElementById("vldesc");
+			var pdesc = document.getElementById("pdesc");
+			var pcompra = document.getElementById("pcompra");
+			var tpicms = document.getElementsByName("tpicms");
+			var vlicms = document.getElementById("vlicms");
+			var pcicms = document.getElementById("pcicms");
+			var vliva = document.getElementById("vliva");
+			var pciva = document.getElementById("pciva");
+			var vlalqext = document.getElementById("vlalqext");
+			var pcalqext = document.getElementById("pcalqext");
+			var vlalqint = document.getElementById("vlalqint");
+			var pcalqint = document.getElementById("pcalqint");
+			var vlpis = document.getElementById("vlpis");
+			var pcpis = document.getElementById("pcpis");
+			var vlcofins = document.getElementById("vlcofins");
+			var pccofins = document.getElementById("pccofins");
+
+			var prNeg = parseFloat(pcneg.value);
+			var percIpi = parseFloat(pcipi.value) / 100;
+			var percDesc = parseFloat(pdesc.value) / 100;
+			var percIcms = parseFloat(pcicms.value) / 100;
+			var percIva = parseFloat(pciva.value) / 100;
+			var percAlqExt = parseFloat(pcalqext.value) / 100;
+			var percAlqInt = parseFloat(pcalqint.value) / 100;
+			var percPis = parseFloat(pcpis.value) / 100;
+			var percCofins = parseFloat(pccofins.value) / 100;
+
+			var vlrIpi = prNeg * percIpi;
+			var vlrDesc = prNeg * percDesc;
+			var prCompra = prNeg + vlrIpi - vlrDesc;
+			var vlrIcms = prNeg * percIcms;
+
+			pcompra.innerHTML = prCompra.toFixed(2);
+			vlipi.innerHTML = vlrIpi.toFixed(2);
+			vldesc.innerHTML = vlrDesc.toFixed(2);
+			vlicms.innerHTML = vlrIcms.toFixed(2);
+
+}
+	</script>
+	<title>Calculadora de Formação de Preço</title>
+</head>
+<body>
+	<img src="C:\Users\frank\Documents\Projetos\javascritpt\calculadora_preco\img\logo_bc.jpg" class="logo">
+	<h1>Calcular o Preço de Venda</h1>
+	<h4>Calcular o Custo de Entrada</h4>
+	<table>
+		<tr class="cab">
+			<td >Descrição</td>
+			<td >Valor</td>
+			<td >Percentual</td>
+		</tr>
+		<tr class="text">
+			<td >Preço de Compra</td>
+			<td >R$ <input id="pcneg" onchange="calculaCompra();"></td>
+			<td >Valor negociado com o fornecedor.</td>
+		</tr>
+		<tr class="text">
+			<td >IPI</td>
+			<td >R$ <span class="cab" id="vlipi"></td>
+			<td ><input id="pcipi" onchange="calculaCompra();" value="0">%</td>
+		</tr>
+		<tr class="text">
+			<td >Desconto Comercial</td>
+			<td >R$ <span class="cab" id="vldesc" ></td>
+			<td ><input id="pdesc" onchange="calculaCompra();" value="0">%</td>
+		</tr>
+		<tr><td><p></p></td></tr>
+		<tr class="text">
+			<td >Preço da Mercadoria</td>
+			<td >R$ <span class="cab" id="pcompra"></span></td>
+			<td ></td>
+		</tr>
+		<tr><td><p></p></td></tr>
+		<tr><td class="cab">Impostos</td></tr>
+		<tr class="text">
+			<td >ICMS</td>
+			<td >
+				<form>
+				<input type="radio" name="tpicms" value="icmsnormal" checked>Normal <br>
+				<input type="radio" name="tpicms" value="icsmst">Substituição Tributária
+				</form>
+			</td>
+		</tr>
+		<tr class="text">
+			<td >ICMS</td>
+			<td >R$ <span class="cab" id="vlicms"></span></td>
+			<td ><input id="pcicms" onchange="calculaCompra()" value="0">%</td>
+		</tr>
+		<tr class="text">
+			<td >IVA</td>
+			<td >R$ <span class="cab" id="vliva"></span></td>
+			<td ><input id="pciva" onchange="calculaCompra()" value="0">%</td>
+		</tr>
+		<tr class="text">
+			<td >Alíquota Externa</td>
+			<td >R$ <span class="cab" id="vlalqext"></span></td>
+			<td ><input id="pcalqext" onchange="calculaCompra()" value="0">%</td>
+		</tr>
+		<tr class="text">
+			<td >Alíquota Interna</td>
+			<td >R$ <span class="cab" id="vlalqint"></span></td>
+			<td ><input id="pcalqint" onchange="calculaCompra()" value="0">%</td>
+		</tr>
+		<tr class="text">
+			<td >PIS</td>
+			<td >R$ <span class="cab" id="vlpis"></span></td>
+			<td ><input id="pcpis" onchange="calculaCompra()" value="0">%</td>
+		</tr>
+		<tr class="text">
+			<td >Cofins</td>
+			<td >R$ <span class="cab" id="vlcofins"></span></td>
+			<td ><input id="pccofins" onchange="calculaCompra()" value="0">%</td>
+		</tr>
+	</table>
+</body>
+</html>
